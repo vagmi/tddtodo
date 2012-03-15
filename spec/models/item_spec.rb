@@ -29,4 +29,16 @@ describe Models::Item do
       end
     end
   end
+  describe "#from" do
+    context "when it has done tag" do
+      before do
+        @item_string = "My Item #done"
+        @item = Models::Item.from(@item_string)
+      end
+      it "should set the content and status properly" do
+        @item.content.should == "My Item"
+        @item.status.should be_true
+      end
+    end
+  end
 end
